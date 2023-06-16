@@ -1,0 +1,24 @@
+.HorizontalDivier{
+	display: block;
+	height: 1px;
+	border: 0;
+	border-top: 1px solid #000;
+	margin: 0;
+}
+
+/* I'm trying to match the active button style with the content area */
+.CategoryButton.active{
+	position: absolute;
+	display: float;
+	background-color: white;
+	height: 100%;
+	width: 110%;
+	left: -8%;
+	top: 0;
+	bottom: 0;
+	border: none;
+	box-shadow: -10px 10px 20px 0px #848484;
+	/* the inset values are in the order of "top right bottom left" */
+	clip-path: inset(-30px 2px -30px -30px);
+	z-index: 2;
+}

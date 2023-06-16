@@ -1,0 +1,119 @@
+<!DOCTYPE HTML>
+
+<html lang=en">
+<head>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+	<script src="assets/prism.js"></script>
+	
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous" />
+	<link rel="stylesheet" href="structure.css" />
+	<link rel="stylesheet" href="helpers.css" />
+	<link rel="stylesheet" href="assets/prism.css" />
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<nav class="navbar navbar-expand-md bg-light">
+		<div class="container-fluid">
+			<ul class="navbar-nav ms-auto">
+				<li class="nav-item mx-2">
+					<a class="nav-link" href="https://github.com/HanslyRZ">
+						Github
+						<img class="rounded-pill" src="assets/images/github_logo.png" alt="github_logo.png" style="width: 40px;">
+					</a>
+				</li>
+				<li class="nav-item mx-2">
+					<a class="nav-link" href="https://www.linkedin.com/in/arze-lu-920b72224/">
+						linkedin
+						<img class="rounded-pill" src="assets/images/linkedin_logo.png" alt="linkedin_logo.png" style="width: 40px;">
+					</a>
+				</li>
+				<li class="nav-item mx-2">
+					<a class="nav-link" href="#">
+						HanslyBox
+						<img class="rounded-pill" src="assets/images/hanslybox_logo.png" alt="hanslybox_logo.png" style="width: 40px;">
+					</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+	<div class="container">
+		<div class="MainWrapper">
+			<div class="TitleRow">
+				<p class="position-absolute text-start fs-2 fw-bold font-monospace ms-5 mt-5">Arze Lu - Software Engineer</p>
+			</div>
+			<main class="ContentWrapper">
+				<div class="CategoryButtonColumn">
+					<div class="CategoryButtonWrapper">
+						<button id="b1" onclick="buttonActive(this)" class="CategoryButton active">Profile</button>
+					</div>
+					<hr class="HorizontalDivier">
+					<div class="CategoryButtonWrapper">
+						<button id="b2" onclick="buttonActive(this)" class="CategoryButton">Resume</button>
+					</div>
+					<hr class="HorizontalDivier">
+					<div class="CategoryButtonWrapper">
+						<button id="b3" onclick="buttonActive(this)" class="CategoryButton">Profile</button>
+					</div>
+					<hr class="HorizontalDivier">
+					<div class="CategoryButtonWrapper">
+						<button id="b4" onclick="buttonActive(this)" class="CategoryButton">Profile</button>
+					</div>
+					<hr class="HorizontalDivier">
+					<div class="CategoryButtonWrapper">
+						<button id="b5" onclick="buttonActive(this)" class="CategoryButton">Profile</button>
+					</div>
+					<hr class="HorizontalDivier">
+					<div class="CategoryButtonWrapper">
+						<button id="b6" onclick="buttonActive(this)" class="CategoryButton">Profile</button>
+					</div>
+					<hr class="HorizontalDivier">
+				</div>
+				<div class="InfoWrapper" id="profilePage" style="display: block;">
+					<img class="rounded-pill" src="assets/images/pfp.png" alt="profile_picture" style="width: 325px; height: auto; float: right; margin-right: 5%;">
+					<div style="position: relative; display: inline-block; margin-left: 20%; margin-top: 4%; margin-bottom: 4%; left: 0; height: 100px; width: 380px;">
+						<!-- The lack of formatting here is to accomodate for PrismJs -->
+						<!-- White space between <pre> and <code> tag disrupts the display -->
+						<pre style="position: absolute; height: 100%; width: 100%;"><code class="language-html text-center" style="font-size: 30px;">&lt;p> Hello World! &lt;/p> Scroll to see me!</code></pre>
+					</div>
+					<p class="" style="margin-left: 5%; margin-bottom: 5%;">
+						This is section where I'll write a paragraph introducing myself and all of the stuff that I did. Yes I'm purposedly writing
+						a long ah message to test the display. I am going to insert some wiki stuff about penguins here -><br>
+						Penguins are a group of aquatic flightless birds from the order Sphenisciformes (/sfɪˈnɪsəfɔːrmiːz/) of the family Spheniscidae (/sfɪˈnɪsɪdiː, -daɪ/).[4] 
+						They live almost exclusively in the Southern Hemisphere: only one species, the Galápagos penguin, is found north of the Equator. Highly adapted for life
+						in the water, penguins have countershaded dark and white plumage and flippers for swimming. Most penguins feed on krill, fish, squid and other forms 
+						of sea life which they catch with their bills and swallow whole while swimming. A penguin has a spiny tongue and powerful jaws to grip slippery prey.[5]
+						They spend roughly half of their lives on land and the other half in the sea. The largest living species is the emperor penguin (Aptenodytes forsteri):[6] 
+						on average, adults are about 1.1 m (3 ft 7 in) tall and weigh 35 kg (77 lb). The smallest penguin species is the little blue penguin (Eudyptula minor), also
+						known as the fairy penguin, which stands around 30–33 cm (12–13 in) tall and weighs 1.2–1.3 kg (2.6–2.9 lb).[7] Today, larger penguins generally inhabit 
+						older regions, and smaller penguins inhabit regions with temperate or tropical climates. Some prehistoric penguin species were enormous: as tall or heavy as 
+						an adult human. There was a great diversity of species in subantarctic regions, and at least one giant species in a region around 2,000 km south of the equator 
+						35 mya, during the Late Eocene, a climate decidedly warmer than today.[8]
+					</p>
+				</div>
+			</main>
+		</div>
+	</div>
+	<script>
+		let linkId = "b1";
+		function buttonActive(element){
+			let tempLinkId = element.id;
+			if(tempLinkId === linkId){
+				return;
+			}
+			
+			<!-- Adding active style to the new active button -->
+			let newElement = document.getElementById(tempLinkId);
+			newElement.classList.add("active");
+			
+			if(linkId === "bl"){
+				newElement.style.setProperty("clip-path", "inset(2px 2px -30px -30x)");
+			}
+			
+			<!-- Removing active style from the previous active button -->
+			document.getElementById(linkId).classList.remove("active");
+			linkId = tempLinkId;
+		}
+	</script>
+</body>
+</html>
