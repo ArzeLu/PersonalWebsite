@@ -4,7 +4,10 @@
 .MainWrapper{
 	/* background-color: #FFA500; */
 	position: fixed;
-	background-image: 
+	background-image: url("assets/images/desk.jpg");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
 	left: 0;
 	right: 0;
 	height: 100%;
