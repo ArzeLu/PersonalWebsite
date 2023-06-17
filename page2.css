@@ -1,0 +1,55 @@
+/* This file contains CSS for page two */
+/* z-index order (low to high) -> CategoryButton -> InfoWrapper -> CategoryButton.active -> TitleRow
+/* The flex row is to account for the button column and the main content area */
+.Page2{
+	position: relative;
+	display: flex;
+	flex-direction: row;
+	background-color: transparent;
+	height: 100%;
+	width: 60%;
+	margin-left: auto;
+	margin-right: auto;
+	box-shadow: 0px 30px 25px 10px #747474;
+}
+
+.CategoryButtonColumn{
+	position: relative;
+	height: 100%;
+	width: 15%;
+	background-color: white;
+}
+
+.CategoryButtonWrapper{
+	position: relative;
+	height: 10%;
+	width: 100%;
+}
+
+.CategoryButton{
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	background-color: #0084D7;
+	z-index: 0;
+}
+
+.HorizontalDivier{
+	display: block;
+	height: 1px;
+	border: 0;
+	border-top: 1px solid #000;
+	margin: 0;
+}
+
+
+.InfoWrapper{
+	position: relative;
+	background-color: white;
+	width: 85%;
+	height: 100%;
+	right: 0;
+	padding: 3%;
+	box-shadow: -10px 20px 25px 5px #848484;
+	z-index: 1;
+}
