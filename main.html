@@ -1,7 +1,10 @@
 <!DOCTYPE HTML>
 
-<html lang=en">
+<html lang="en">
 <head>
+	<title>Arze's Space</title>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 	<script src="assets/prism.js"></script>
 	
@@ -42,14 +45,15 @@
 	</nav>
 	<div class="container">
 		<div class="MainWrapper">
+			<div id="background" class="BackgroundImage"></div>
 			<!-- <div class="TitleRow"> -->
 				<!-- <p class="position-absolute text-start fs-2 fw-bold font-monospace ms-5 mt-5">Arze Lu - Software Engineer</p> -->
 			<!-- </div> -->
-			<main class="ContentWrapper">
+			<main id="content" class="ContentWrapper" onscroll="">
 				<!-- Page 1 section -->
 				<div class="Page1">
 					<span class="PageTitle">Home of a<br>Passionate Programmer</span>
-					<button type="button" class="GoToProfile">
+					<button id="profileNav" type="button" class="GoToProfile">
 						Go To Profile
 					</button>
 				</div>
@@ -58,27 +62,27 @@
 					<!-- Button Column-->
 					<div class="CategoryButtonColumn">
 						<div class="CategoryButtonWrapper">
-							<button id="b1" onclick="buttonActive(this)" class="CategoryButton active">Profile</button>
+							<button type="button" id="b1" onclick="buttonActive(this)" class="CategoryButton active">Profile</button>
 						</div>
 						<hr class="HorizontalDivier">
 						<div class="CategoryButtonWrapper">
-							<button id="b2" onclick="buttonActive(this)" class="CategoryButton">Resume</button>
+							<button type="button" id="b2" onclick="buttonActive(this)" class="CategoryButton">Resume</button>
 						</div>
 						<hr class="HorizontalDivier">
 						<div class="CategoryButtonWrapper">
-							<button id="b3" onclick="buttonActive(this)" class="CategoryButton">Profile</button>
+							<button type="button" id="b3" onclick="buttonActive(this)" class="CategoryButton">Profile</button>
 						</div>
 						<hr class="HorizontalDivier">
 						<div class="CategoryButtonWrapper">
-							<button id="b4" onclick="buttonActive(this)" class="CategoryButton">Profile</button>
+							<button type="button" id="b4" onclick="buttonActive(this)" class="CategoryButton">Profile</button>
 						</div>
 						<hr class="HorizontalDivier">
 						<div class="CategoryButtonWrapper">
-							<button id="b5" onclick="buttonActive(this)" class="CategoryButton">Profile</button>
+							<button type="button" id="b5" onclick="buttonActive(this)" class="CategoryButton">Profile</button>
 						</div>
 						<hr class="HorizontalDivier">
 						<div class="CategoryButtonWrapper">
-							<button id="b6" onclick="buttonActive(this)" class="CategoryButton">Profile</button>
+							<button type="button" id="b6" onclick="buttonActive(this)" class="CategoryButton">Profile</button>
 						</div>
 						<hr class="HorizontalDivier">
 					</div>
@@ -110,24 +114,56 @@
 		</div>
 	</div>
 	<script>
-		let linkId = "b1";
+		var blurTracker = 0;
+		let linkId = "#b1";
 		function buttonActive(element){
-			let tempLinkId = element.id;
+			let tempLinkId = "#" + element.id;
 			if(tempLinkId === linkId){
 				return;
 			}
 			
 			<!-- Adding active style to the new active button -->
-			let newElement = document.getElementById(tempLinkId);
-			newElement.classList.add("active");
-			
-			if(linkId === "bl"){
-				newElement.style.setProperty("clip-path", "inset(2px 2px -30px -30x)");
-			}
+			$(tempLinkId).addClass("active");
 			
 			<!-- Removing active style from the previous active button -->
-			document.getElementById(linkId).classList.remove("active");
+			$(linkId).removeClass("active");
 			linkId = tempLinkId;
+		}
+		
+		$("#profileNav").click(
+			() => {
+				blur();
+				scrollDown();
+			}
+		);
+		
+		function blur(){
+			var element = $("#background");
+			var blurProcess = setInterval(blurring, 50); /* blurring instead of blurring() here for setInterval() */
+			function blurring(){
+				if(blurTracker >= 10){
+					clearInterval(blurProcess);
+				}
+				blurTracker += 1;
+				var property = "blur(" + blurTracker + "px)";
+				element.css({"-webkit-filter" : property, "filter" : property});
+			}
+		}
+		
+		function scrollDown(){
+			var element = $("#content");
+			var maxY = element[0].scrollHeight;  /* $() returns element wrapped in jQuery object; $()[0] return the DOM element itself */
+			var clientMaxY = element[0].clientHeight;
+			var currentY = element[0].scrollTop;
+			var scrollProcess = setInterval(scrolling, 10);
+			function scrolling(){
+				if((maxY - currentY) <= clientMaxY){
+					element[0].scrollTop = clientMaxY;
+					clearInterval(scrollProcess);
+				}
+				currentY += 16;
+				element[0].scrollTop += 16;	
+			}
 		}
 	</script>
 </body>
