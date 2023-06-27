@@ -88,8 +88,8 @@
 					</div>
 					<!-- Profile content-->
 					<div class="InfoWrapper" id="profilePage" style="display: block;">
-						<img class="rounded-pill" src="assets/images/pfp.png" alt="profile_picture" style="width: 325px; height: auto; float: right; margin-right: 5%;">
-						<div style="position: relative; display: inline-block; margin-left: 20%; margin-top: 4%; margin-bottom: 4%; left: 0; height: 100px; width: 380px;">
+						<img class="rounded-pill" src="assets/images/pfp.png" alt="profile_picture" style="width: 30%; height: auto; float: right; margin-right: 5%;">
+						<div style="position: relative; display: inline-block; margin-left: 20%; margin-top: 4%; margin-bottom: 4%; left: 0; height: 10%; width: 30%;">
 							<!-- The lack of formatting here is to accomodate for PrismJs -->
 							<!-- White space between <pre> and <code> tag disrupts the display -->
 							<pre style="position: absolute; height: 100%; width: 100%;"><code class="language-html text-center" style="font-size: 30px;">&lt;p> Hello World! &lt;/p> Scroll to see me!</code></pre>
@@ -115,7 +115,68 @@
 	</div>
 	<script>
 		var blurTracker = 0;
-		let linkId = "#b1";
+		var linkId = "#b1";
+		
+		$(document).ready(function(){
+			var background = $("#background");
+			var element = document.getElementById("content"); /* $() returns element wrapped in jQuery object; $()[0] return the DOM element itself */
+			var maxY = element.scrollHeight;
+			var clientMaxY = element.clientHeight;
+			var totalScrollable = maxY - clientMaxY;
+			
+			$("#profileNav").on("click",
+				() => {
+					blur();
+					scrollDown();
+				}
+			);
+			
+			/* The background blurs while scrolling */
+			/* The blurring rate is the same as the scroll progress */
+			$("#content").on("scroll",
+				function(){
+					var y = element.scrollTop;
+					var percentScrolled = y / totalScrollable;
+					var blurRate = 15 * percentScrolled;
+					
+					blurTracker = blurRate;
+					var property = "blur(" + blurTracker + "px)";
+					background.css({"-webkit-filter" : property, "filter" : property});
+					console.log(percentScrolled + "\n" + blurTracker);
+				}
+			)
+			
+			function blur(){
+				var blurProcess = setInterval(blurring, 50); /* blurring instead of blurring() here for setInterval() */
+				function blurring(){
+					if(blurTracker >= 15){
+						clearInterval(blurProcess);
+					}
+					blurTracker += 1;
+					var property = "blur(" + blurTracker + "px)";
+					background.css({"-webkit-filter" : property, "filter" : property});
+				}
+			}
+			
+			function scrollUp(){
+		
+			}
+			
+			function scrollDown(){
+				var y = element.scrollTop;
+				var scrollProcess = setInterval(scrolling, 10);
+				
+				function scrolling(){
+					if((maxY - y) <= clientMaxY){
+						element.scrollTop = clientMaxY;
+						clearInterval(scrollProcess);
+					}
+					y += 16;
+					element.scrollTop += 16;	
+				}
+			}
+		});
+			
 		function buttonActive(element){
 			let tempLinkId = "#" + element.id;
 			if(tempLinkId === linkId){
@@ -128,42 +189,6 @@
 			<!-- Removing active style from the previous active button -->
 			$(linkId).removeClass("active");
 			linkId = tempLinkId;
-		}
-		
-		$("#profileNav").click(
-			() => {
-				blur();
-				scrollDown();
-			}
-		);
-		
-		function blur(){
-			var element = $("#background");
-			var blurProcess = setInterval(blurring, 50); /* blurring instead of blurring() here for setInterval() */
-			function blurring(){
-				if(blurTracker >= 10){
-					clearInterval(blurProcess);
-				}
-				blurTracker += 1;
-				var property = "blur(" + blurTracker + "px)";
-				element.css({"-webkit-filter" : property, "filter" : property});
-			}
-		}
-		
-		function scrollDown(){
-			var element = $("#content");
-			var maxY = element[0].scrollHeight;  /* $() returns element wrapped in jQuery object; $()[0] return the DOM element itself */
-			var clientMaxY = element[0].clientHeight;
-			var currentY = element[0].scrollTop;
-			var scrollProcess = setInterval(scrolling, 10);
-			function scrolling(){
-				if((maxY - currentY) <= clientMaxY){
-					element[0].scrollTop = clientMaxY;
-					clearInterval(scrollProcess);
-				}
-				currentY += 16;
-				element[0].scrollTop += 16;	
-			}
 		}
 	</script>
 </body>
