@@ -1,7 +1,7 @@
 /* This file contains CSS for the main structure  */
 /* or basically anything that's not page 1 or 2 */
 
-.MainWrapper{
+.MainViewWrapper{
 	/* background-color: #FFA500; */
 	position: fixed;
 	height: 100%;
@@ -39,7 +39,7 @@
 
 /* Making the content in this div able to overflow since it contains the main content*/
 /* The div here is below the navbar and the title row */
-.ContentWrapper{
+.MainView{
 	position: absolute;
 	height: 100%;
 	width: 100%;

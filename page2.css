@@ -1,7 +1,24 @@
 /* This file contains CSS for page two */
 /* z-index order (low to high) -> CategoryButton -> InfoWrapper -> CategoryButton.active -> TitleRow
 /* The flex row is to account for the button column and the main content area */
+
+.BackToTop{
+	position: absolute;
+	background-color: blue;
+	height: 10%;
+	width: 10%;
+	bottom: 20%;
+	right: 2%;
+}
+
 .Page2{
+	position: relative;
+	height: 100%;
+	width: 100%;
+	background: transparent;
+}
+
+.MainContent{
 	position: relative;
 	display: flex;
 	flex-direction: row;
