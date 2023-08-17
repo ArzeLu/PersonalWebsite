@@ -22,3 +22,14 @@
 .ContentWrapper::-webkit-scrollbar{
 	display: none;
 }
+
+.showInfo{
+	margin-left: 5%;
+	margin-bottom: 5%;
+}
+
+.hideInfo{
+	display: none;
+	height: 0px;
+	width: 0px;
+}

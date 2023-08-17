@@ -1,6 +1,12 @@
 /* This file contains CSS for the main structure  */
 /* or basically anything that's not page 1 or 2 */
 
+pre{
+	white-space: pre-wrap;
+	word-wrap: break-word;
+	text-align: justify;
+}
+
 .MainViewWrapper{
 	/* background-color: #FFA500; */
 	position: fixed;
