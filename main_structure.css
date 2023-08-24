@@ -2,7 +2,7 @@
 /* or basically anything that's not page 1 or 2 */
 
 pre{
-	white-space: pre-wrap;
+	white-space: pre-wrap ;
 	word-wrap: break-word;
 	text-align: justify;
 }

@@ -62,13 +62,62 @@
 
 
 .InfoWrapper{
+	display: block;
 	position: relative;
 	background-color: white;
 	width: 85%;
 	height: 100%;
-	right: 0;
-	padding: 3%;
+	left: 0px;
 	box-shadow: -15px 10px 20px 1px #444444;
 	z-index: 1;
 	overflow: auto;
+}
+
+.Resume{
+	display: grid;
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	grid-template-columns: 100%;
+	grid-template-rows: auto auto auto auto auto auto auto auto;
+	column-gap: 0px;
+	padding: 0px;
+}
+
+.ResumeItems{
+	width: 100%;
+	text-align: left;
+	white-space: pre-line;
+	padding: 7%;
+	background-image: url("assets/images/resume_row_style.jpg");
+	background-position: center;
+	background-size: cover;
+	font-family: Helvetica, sans-serif;
+	overflow: visible;
+}
+
+.JobCategory{
+	width: fit-content;
+	background-image: url("assets/images/resume_row_category_style.jpg");
+	background-position: center;
+	background-size: cover;
+	font-family: Verdana, sans-serif;
+	font-weight: 700;
+	font-size: 35px;
+	font-style: italic;
+	filter: saturate(200%) brightness(100%);
+}
+
+.JobTitle{
+	text-align: left;
+	font-family: Verdana, sans-serif;
+	font-weight: bold;
+	font-size: 30px;
+}
+
+.RoleDesc{
+	float: right;
+	font-style: italic;
+	font-size: 15px;
+	font-weight: 600;
 }
